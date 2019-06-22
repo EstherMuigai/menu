@@ -9,19 +9,8 @@ export class MenuComponent implements OnInit {
 
   items = [
     {
-      name: 'Salad', choices: [
-        { name: 'Santa Fe' },
-        { name: 'Greek' },
-        { name: 'Asian' },
-      ],
-      related: [
-        {
-          name: 'Dressing', choices: [
-            { name: 'Italian' },
-            { name: 'Blue Cheese' },
-            { name: 'Ranch' },
-          ]
-        },
+      name: 'Salad', choices: [{ name: 'Santa Fe' },{ name: 'Greek' },{ name: 'Asian' },],
+      related: [{name: 'Dressing', choices: [{ name: 'Italian' },{ name: 'Blue Cheese' },{ name: 'Ranch' },]},
 
         {
           name: 'Bread', choices: [
@@ -55,10 +44,19 @@ export class MenuComponent implements OnInit {
         }
       ]
     }
-  ]
+  ];
+
+  choices = [];
+  addChoice(items){
+    for (let index = 0; index < items.length; index++) {
+      const element = items[index];
+      console.log(element);
+    }
+  }
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

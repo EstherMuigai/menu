@@ -1,4 +1,18 @@
-<h1>Menu</h1>
-<ul>
-  <li *ngFor='let item of items'>{{item.name}}</li>
-</ul>
+<div class="row">
+  <div class="col-md-3" id="menu">
+  </div>
+  <div class="col-md-9">
+    <div class="form-check" *ngFor='let item of items; let i=index'>
+      <input type="checkbox" class="form-check-input" name="item" (click)='itemSelect(true)' id="{{item.name}}">
+      <label class="form-check-label">{{item.name}}</label>
+      {{item.choices[0].name}},
+      {{item.choices[1].name}},
+      {{item.choices[2].name}}
+      <!-- <div class="form-check" *ngFor='let choice of {{item.choices}}; let i=index'>
+          <input type="checkbox" class="form-check-input" name="item" (click)='itemSelect(true)' id="{{choice.name}}">
+          <label class="form-check-label">{{choice.name}}</label>
+        </div> 
+      -->
+    </div>
+  </div>
+</div>
