@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core'
 import { Menu } from '../menu'
 
 @Component({
@@ -48,22 +48,28 @@ export class MenuComponent implements OnInit {
     }
   ];
 
-  showChoice(index,name){
-    if(name==this.items[index].name){
+  showChoice(index,yoohoo){
+    if(yoohoo==this.items[index].name){
       this.items[index].showMore = !this.items[index].showMore;
     }
   }
 
-  choiceSelect(index){
-    this.items[index].showMoreMore = !this.items[index].showMoreMore;
+  choiceSelect(index,yoohoo){
+    if(yoohoo==this.items[index].choices){
+      this.items[index].showMoreMore = !this.items[index].showMoreMore;
+    }
   }
 
-  otheritemSelect(index){
-    this.items[index].showMoreMoreMore = !this.items[index].showMoreMoreMore;
+  otheritemSelect(index,indexk,yoohoo){
+    if(yoohoo==this.items[index].related[indexk].name){
+      this.items[index].showMoreMoreMore = !this.items[index].showMoreMoreMore;
+    }
   }
 
-  otherchoiceSelect(index){
-    this.items[index].showMoreMoreMoreMore = !this.items[index].showMoreMoreMoreMore;
+  otherchoiceSelect(index,indexk,yoohoo){
+    if(yoohoo==this.items[index].related[indexk].choices){
+      this.items[index].showMoreMoreMoreMore = !this.items[index].showMoreMoreMoreMore;
+    }
   }
 
   constructor() {

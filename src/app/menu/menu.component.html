@@ -6,35 +6,31 @@
     <div class="form-check" *ngFor='let item of items; let i=index;'>
       <input type="checkbox" class="btn" (click)='showChoice(i,item.name)'>
       <label class="form-check-label">{{item.name}}</label>
-      <div>
           <div *ngIf="item.showMore">
-            <div class="form-check" *ngFor='let choice of item.choices | keyvalue; let i=index;'>
-              <p *ngIf='i==0'>Pick one {{item.name}} item</p>
+            <div class="form-check" *ngFor='let choice of item.choices | keyvalue; let j=index;'>
+              <p *ngIf='j==0'>Pick one {{item.name}} item</p>
               <div style="margin-left:10%;">
-                  <input type="checkbox" class="btn" (click)='choiceSelect(i)'>
+                  <input type="checkbox" class="btn" (click)='choiceSelect(i,item.choices)'>
                   <label class="form-check-label">{{choice.value.name}}</label>
               </div>
             </div>
-          </div>
-      </div>
       <div *ngIf="item.showMoreMore">
-        <div class="form-check" *ngFor='let other of item.related; let i=index;'>
-          <p *ngIf='i==0'>You might also want</p>
-          <input type="checkbox" class="btn" (click)='otheritemSelect(i)'>
-          <label class="form-check-label">{{other.name}}</label> 
+        <div class="form-check" *ngFor='let other of item.related; let k=index;'>
+          <p *ngIf='k==0'>You might also want</p>
+          <input type="checkbox" class="btn" (click)='otheritemSelect(i,k,other.name)'>
+          <label class="form-check-label">{{other.name}}</label>
           <div *ngIf="item.showMoreMoreMore">
-            <div class="form-check" *ngFor='let otherchoice of other.choices | keyvalue; let i=index;'>
-              <p *ngIf='i==0'>Pick one {{other.name}} item</p>
-              <div *ngIf="item.showMoreMoreMore">
+            <div class="form-check" *ngFor='let otherchoice of other.choices | keyvalue; let l=index;'>
+              <p *ngIf='l==0'>Pick one {{other.name}} item</p>
                 <div style="margin-left:10%;">
-                  <input type="checkbox" class="btn" (click)='otherChoiceSelect(i)'>
+                  <input type="checkbox" class="btn">
                   <label class="form-check-label">{{otherchoice.value.name}}</label>
               </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
