@@ -2,17 +2,39 @@
   <div class="col-md-3" id="menu">
   </div>
   <div class="col-md-9">
-    <div class="form-check" *ngFor='let item of items; let i=index'>
-      <input type="checkbox" class="form-check-input" name="item" (click)='itemSelect(true)' id="{{item.name}}">
+    <h3>Menu</h3>
+    <div class="form-check" *ngFor='let item of items; let i=index;'>
+      <input type="checkbox" class="btn" (click)='showChoice(i,item.name)'>
       <label class="form-check-label">{{item.name}}</label>
-      {{item.choices[0].name}},
-      {{item.choices[1].name}},
-      {{item.choices[2].name}}
-      <!-- <div class="form-check" *ngFor='let choice of {{item.choices}}; let i=index'>
-          <input type="checkbox" class="form-check-input" name="item" (click)='itemSelect(true)' id="{{choice.name}}">
-          <label class="form-check-label">{{choice.name}}</label>
-        </div> 
-      -->
+      <div>
+          <div *ngIf="item.showMore">
+            <div class="form-check" *ngFor='let choice of item.choices | keyvalue; let i=index;'>
+              <p *ngIf='i==0'>Pick one {{item.name}} item</p>
+              <div style="margin-left:10%;">
+                  <input type="checkbox" class="btn" (click)='choiceSelect(i)'>
+                  <label class="form-check-label">{{choice.value.name}}</label>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div *ngIf="item.showMoreMore">
+        <div class="form-check" *ngFor='let other of item.related; let i=index;'>
+          <p *ngIf='i==0'>You might also want</p>
+          <input type="checkbox" class="btn" (click)='otheritemSelect(i)'>
+          <label class="form-check-label">{{other.name}}</label> 
+          <div *ngIf="item.showMoreMoreMore">
+            <div class="form-check" *ngFor='let otherchoice of other.choices | keyvalue; let i=index;'>
+              <p *ngIf='i==0'>Pick one {{other.name}} item</p>
+              <div *ngIf="item.showMoreMoreMore">
+                <div style="margin-left:10%;">
+                  <input type="checkbox" class="btn" (click)='otherChoiceSelect(i)'>
+                  <label class="form-check-label">{{otherchoice.value.name}}</label>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
